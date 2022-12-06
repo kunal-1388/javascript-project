@@ -1,1 +1,4 @@
 cypress/
+drone.yml
+.newton.config
+cypress.json
