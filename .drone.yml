@@ -1,0 +1,29 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: run-test-cases
+    image: cypress/included:8.6.0
+    when:
+      status:
+      - failure
+      - success
+    commands:
+      - touch html_temp_file
+      - echo ${HTML_CODE} > html_temp_file
+      - sed -i "s/ /+/g" html_temp_file
+      - base64 --decode ./html_temp_file > index.html
+      - touch test_case_temp_file
+      - echo ${TEST_CASES} > test_case_temp_file
+      - sed -i "s/ /+/g" test_case_temp_file
+      - base64 --decode ./test_case_temp_file > cypress/integration/tests.js
+      - npm install
+      - npm test
+  - name: result
+    image: node
+    when:
+      status:
+      - failure
+      - success
+    commands:
+      - node parser.js
