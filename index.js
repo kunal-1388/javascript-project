@@ -187,6 +187,7 @@ let sticky = header.offsetTop;
 window.onscroll = function () {
     myFunction();
 };
+
 function myFunction() {
     if (window.pageYOffset > sticky) {
         header.classList.add("sticky");
@@ -195,6 +196,7 @@ function myFunction() {
     }
 }
 
+// 1
 //list products
 
 let productcontainer = document.querySelector(".productscontainer");
@@ -213,6 +215,7 @@ productslist.map((e) => {
   `;
 });
 
+// 2
 //display cart ui
 let cartui = document.querySelector(".cartui");
 let overlay = document.querySelector(".overlay");
@@ -225,8 +228,7 @@ document.querySelector(".closecart").onclick = () => {
     cartui.classList.remove("cartopened");
 };
 
-
-//class Product
+// 3
 class Product {
     constructor(id, title, price, image) {
         this.id = id;
@@ -236,6 +238,11 @@ class Product {
     }
 }
 
+window.Product = Product;
+// const obj=new window.Product(1,"demo",100,"link");
+// console.log(obj);
+
+// 4
 //class Storage
 class Storage {
     static getproducts() {
@@ -265,10 +272,11 @@ class Storage {
     }
 }
 
+window.Storage=Storage
+// 5
 //class Ui
 class Ui {
     static displayproducts(e) {
-        // console.log(e);
         document.querySelector(".pccontainer").innerHTML += `
                   <div class="cartproduct">
                   <div class="pnp">
@@ -315,11 +323,13 @@ class Ui {
     }
 }
 
+// 6
 document.addEventListener("DOMContentLoaded", function () {
     Ui.displayproductsLS();
     bag.setAttribute("items", Storage.getproducts().length);
 });
 
+// 7
 //add product event
 
 document.querySelectorAll(".addtocart").forEach((e) => {
@@ -343,6 +353,7 @@ document.querySelectorAll(".addtocart").forEach((e) => {
     };
 });
 
+// 8
 //remove product event
 document.querySelector(".pccontainer").onclick = (e) => {
     if (e.target.classList.contains("delete")) {
@@ -352,13 +363,3 @@ document.querySelector(".pccontainer").onclick = (e) => {
         bag.setAttribute("items", Storage.getproducts().length);
     }
 };
-
-
-
-// Display the list of top 5 Spenders (incomplete)
-async function topFiveSpenders() {
-    let res = await fetch("https://content.newtonschool.co/v1/pr/main/users");
-    console.log(res);
-}
-
-topFiveSpenders();

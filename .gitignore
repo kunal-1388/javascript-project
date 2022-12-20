@@ -1,4 +1,4 @@
-cypress/
 drone.yml
 .newton.config
 cypress.json
+node_modules/
