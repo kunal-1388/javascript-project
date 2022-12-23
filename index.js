@@ -323,6 +323,8 @@ class Ui {
     }
 }
 
+window.Ui=Ui
+
 // 6
 document.addEventListener("DOMContentLoaded", function () {
     Ui.displayproductsLS();
@@ -352,6 +354,7 @@ document.querySelectorAll(".addtocart").forEach((e) => {
         }
     };
 });
+
 
 // 8
 //remove product event
