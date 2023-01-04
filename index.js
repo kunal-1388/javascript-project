@@ -221,6 +221,7 @@ let cartui = document.querySelector(".cartui");
 let overlay = document.querySelector(".overlay");
 let carticon = document.querySelector(".carticon");
 let bag = document.querySelector(".carticon");
+window.bag = bag;
 carticon.onclick = () => {
     cartui.classList.add("cartopened");
 };
@@ -228,7 +229,7 @@ document.querySelector(".closecart").onclick = () => {
     cartui.classList.remove("cartopened");
 };
 
-// 3
+// // 3
 class Product {
     constructor(id, title, price, image) {
         this.id = id;
@@ -239,11 +240,7 @@ class Product {
 }
 
 window.Product = Product;
-// const obj=new window.Product(1,"demo",100,"link");
-// console.log(obj);
 
-// 4
-//class Storage
 class Storage {
     static getproducts() {
         let products;
@@ -272,9 +269,9 @@ class Storage {
     }
 }
 
-window.Storage=Storage
-// 5
-//class Ui
+// window.Storage = Storage;
+// // 5
+// //class Ui
 class Ui {
     static displayproducts(e) {
         document.querySelector(".pccontainer").innerHTML += `
@@ -288,7 +285,7 @@ class Ui {
                           <p> ${e.price} </p>
                       </div>
                   </div>
-  
+
                   <button class="delete" productid=${e.id}>
                       X
                   </button>
@@ -309,7 +306,7 @@ class Ui {
                           <p> ${e.price} </p>
                       </div>
                   </div>
-  
+
                   <button class="delete" productid=${e.id}>
                       X
                   </button>
@@ -323,16 +320,16 @@ class Ui {
     }
 }
 
-window.Ui=Ui
+window.Ui = Ui;
 
-// 6
+// // 6
 document.addEventListener("DOMContentLoaded", function () {
     Ui.displayproductsLS();
     bag.setAttribute("items", Storage.getproducts().length);
 });
 
-// 7
-//add product event
+// // // // 7
+// // // //add product event
 
 document.querySelectorAll(".addtocart").forEach((e) => {
     e.onclick = (evt) => {
@@ -355,9 +352,8 @@ document.querySelectorAll(".addtocart").forEach((e) => {
     };
 });
 
-
-// 8
-//remove product event
+// // // // 8
+// // //remove product event
 document.querySelector(".pccontainer").onclick = (e) => {
     if (e.target.classList.contains("delete")) {
         let id = e.target.getAttribute("productid");
