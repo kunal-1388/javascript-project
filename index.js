@@ -270,7 +270,7 @@ class Storage {
 }
 
 // window.Storage = Storage;
-// // 5
+ // 5
 // //class Ui
 class Ui {
     static displayproducts(e) {
